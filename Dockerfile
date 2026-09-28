@@ -2,13 +2,13 @@
 FROM ://microsoft.com AS build
 WORKDIR /src
 
-# Copiar el archivo de solución y los archivos de proyecto (.csproj) respetando la estructura
-COPY SistemaHB.sln ./
+# Copiar el archivo de solución nuevo (.slnx) y los proyectos respetando la estructura
+COPY SistemaHB.slnx ./
 COPY SistemaHBAPI/SistemaHBAPI.csproj ./SistemaHBAPI/
 COPY BibliotecaSistemaHB/BibliotecaSistemaHB.csproj ./BibliotecaSistemaHB/
 
-# Restaurar todas las dependencias de la solución entera
-RUN dotnet restore SistemaHB.sln
+# Restaurar todas las dependencias usando la nueva solución .slnx
+RUN dotnet restore SistemaHB.slnx
 
 # Copiar absolutamente todo el código restante de la solución
 COPY . .
@@ -22,7 +22,7 @@ FROM ://microsoft.com AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# .NET 10 expone automáticamente el puerto 8080, que se adapta perfectamente a Render
+# .NET 10 expone automáticamente el puerto 8080, perfecto para Render
 EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "SistemaHBAPI.dll"]
