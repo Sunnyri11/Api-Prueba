@@ -1,3 +1,0 @@
-C:\Users\ALUMNO\source\repos\SistemaHB\publish\BibliotecaSistemaHB.dll
-C:\Users\ALUMNO\source\repos\SistemaHB\publish\BibliotecaSistemaHB.deps.json
-C:\Users\ALUMNO\source\repos\SistemaHB\publish\BibliotecaSistemaHB.pdb
